@@ -17,7 +17,13 @@ if (Meteor.isClient) {
     },
     'click .rate-image' : function(event){
       var rating = $(event.currentTarget).data('userrating');
+      var image_id = this._id;
       console.log("rating is "+rating);
+      console.log("image id is "+image_id);
+      Images.update(
+        {_id : image_id},
+        {$set : {rating : rating}}
+      );
     } 
     
   });
